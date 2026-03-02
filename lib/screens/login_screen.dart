@@ -76,13 +76,13 @@ class _LoginScreenState extends State<LoginScreen>
       final selectedRole = _tabController.index == 0 ? 'buyer' : 'seller';
 
       if (selectedRole == 'seller') {
-        // --- ผู้ขาย (Seller / Admin) - ใช้ระบบจำลองเพื่อความสะดวกในการทดสอบ ---
+        // --- ผู้ขาย (Seller / Admin) - ใช้ระบบจำลองเพื่อความสะดวกในการทดสอบบน GitHub Pages ---
         if (email == 'teat.112233' && password == '111111') {
           _showSnackBar('เข้าสู่ระบบผู้ดูแลร้านค้าสำเร็จ! 🏪');
           _navigateToDashboard();
         } else {
           _showSnackBar(
-            'ชื่อผู้ใช้หรือรหัสผ่านสำหรับผู้ขายไม่ถูกต้อง (ทดสอบ: teat.112233 / 111111)',
+            'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง (ทดสอบ: teat.112233 / 111111)',
             isError: true,
           );
         }
