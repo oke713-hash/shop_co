@@ -76,24 +76,13 @@ class _LoginScreenState extends State<LoginScreen>
       final selectedRole = _tabController.index == 0 ? 'buyer' : 'seller';
 
       if (selectedRole == 'seller') {
-        // --- ผู้ขาย (Seller / Admin) ---
-        // ใช้ระบบ Real Login สำหรับ Admin เพื่อให้ RLS ทำงานถูกต้อง
-        try {
-          // ในระบบนี้เราใช้ email เป็น teat.112233@sakuraya.com เป็นหลัก
-          final loginEmail = email.contains('@')
-              ? email
-              : '$email@sakuraya.com';
-
-          await Supabase.instance.client.auth.signInWithPassword(
-            email: loginEmail,
-            password: password,
-          );
-
+        // --- ผู้ขาย (Seller / Admin) - ใช้ระบบจำลองเพื่อความสะดวกในการทดสอบ ---
+        if (email == 'teat.112233' && password == '111111') {
           _showSnackBar('เข้าสู่ระบบผู้ดูแลร้านค้าสำเร็จ! 🏪');
           _navigateToDashboard();
-        } catch (e) {
+        } else {
           _showSnackBar(
-            'ไม่สามารถเข้าสู่ระบบผู้ขาย: ${e.toString()}',
+            'ชื่อผู้ใช้หรือรหัสผ่านสำหรับผู้ขายไม่ถูกต้อง (ทดสอบ: teat.112233 / 111111)',
             isError: true,
           );
         }
